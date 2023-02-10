@@ -1,0 +1,46 @@
+.user-table {
+    position: absolute;
+    width: 38%;
+    right: 1%;
+    /* height: 285px; */
+    margin-top: -27px;
+}
+
+
+.tr-action {
+    height: 36px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.tr {
+    margin: 0 31px 0 15px;
+}
+
+
+.table-view {
+    position: absolute;
+    width: 96%;
+}
+
+.table-row-table {
+    width: 89%;
+    height: 12px;
+}
+
+.col-table {
+    width: 20px;
+}
+
+
+.table-header-user-table {
+    height: 6%;
+    padding: 14px 23px;
+}
+
+.btn-table {
+    display: flex;
+    height: 31px;
+}
