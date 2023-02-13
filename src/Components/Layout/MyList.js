@@ -1,13 +1,16 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { myListSelector } from '../../Store/Reducer/MyReducer'
+import InputList from '../Form/InputList'
 import './MyList.css'
 const MyList = () => {
     const myList = useSelector(myListSelector)
     return (
         <div class="container-myList">
+
             <h2 className='title-myList'>My List</h2>
             <ul class="responsive-table-myList">
+                <InputList />
                 <li class="table-header-myList">
                     <div class="col col-1">Stt</div>
                     <div class="col col-2">Name</div>

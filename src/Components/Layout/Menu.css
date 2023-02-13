@@ -1,7 +1,7 @@
 .nav-menu {
     display: flex;
     display: inline-flex;
-    /* border: 1px solid gray; */
+    z-index: 100;
     margin-left: 195px;
     border: none;
     outline: none;
@@ -11,12 +11,6 @@
     justify-content: center;
     transform: translateX(50%);
     background-color: #ffffff;
-    box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%),
-        0 6.7px 5.3px rgb(0 0 0 / 5%),
-        0px 17px 10px rgb(0 0 0 / 44%),
-        0px -20px 17.9px rgb(0 0 0 / 7%),
-        1px 20px 33.4px rgb(0 0 0 / 9%),
-        18px 20px 20px rgb(0 0 0 / 12%);
 }
 
 /* reset */
@@ -154,4 +148,68 @@ button {
 
 [data-disabled]>.RightSlot {
     color: var(--mauve8);
+}
+
+/* footer */
+.container-footer {
+    width: 100%;
+    height: 27vh;
+}
+
+.contact-footer {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.footer-contact {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    color: #504f4f;
+    margin-top: 10px;
+
+}
+
+.contact-child:first-child {
+    font-size: 25px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.contact-child {
+    padding: 3px;
+    font-size: 17px;
+}
+
+.contact-child:not(:first-child):hover {
+    color: #000000;
+    cursor: pointer;
+}
+
+.icon-footer {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.icon-footer i:hover {
+    border-bottom: 1px solid black;
+}
+
+.footer-make {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    background-color: #5046c7;
+    color: #EFF5F5;
+    font-size: 20px;
 }

@@ -24,6 +24,15 @@ const myListSlice = createSlice({
                 img: '../../Components/access/avatar3.jpg'
             }
         ]
+    },
+    reducers: {
+        addList: (state, action) => {
+            state.allMyList.unshift({
+                id: Math.random(),
+                name: action.payload,
+                username: action.payload
+            })
+        }
     }
 })
 
@@ -33,5 +42,6 @@ const myListReducer = myListSlice.reducer
 
 //Selector
 export const myListSelector = state => state.myListReducer.allMyList
-
+//export action
+export const { addList } = myListSlice.actions
 export default myListReducer

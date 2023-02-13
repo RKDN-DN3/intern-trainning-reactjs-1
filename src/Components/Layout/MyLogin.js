@@ -20,13 +20,13 @@ export default function MyLogin() {
                             <label className="Label" htmlFor="name">
                                 Name
                             </label>
-                            <input className="Input" id="name" defaultValue="Pedro Duarte" />
+                            <input className="Input" id="name" defaultValue="Pedro" />
                         </fieldset>
                         <fieldset className="Fieldset">
                             <label className="Label" htmlFor="username">
                                 Username
                             </label>
-                            <input className="Input" id="username" defaultValue="@peduarte" />
+                            <input className="Input" id="username" defaultValue="Jonh" />
                         </fieldset>
                         <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
                             <button className="Button green">Login</button>

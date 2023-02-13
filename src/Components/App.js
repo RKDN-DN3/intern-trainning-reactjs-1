@@ -12,7 +12,7 @@ import MyList from './Layout/MyList';
 import MyInfo from './Layout/MyInfo';
 import MyLogin from './Layout/MyLogin';
 import MyRegister from './Layout/MyRegister';
-import Account from '../Components/Form/Account'
+import MyForgotPsw from './Layout/MyForgotPsw';
 function App() {
   return (
     <BrowserRouter>
@@ -24,9 +24,8 @@ function App() {
         <Route path="list" element={<MyList />} />
         <Route path="login" element={<MyLogin />} />
         <Route path="register" element={<MyRegister />} />
-        <Route path="forgot" element={<Account />} />
+        <Route path="forgot" element={<MyForgotPsw />} />
       </Routes>
-
     </BrowserRouter>
   );
 }
