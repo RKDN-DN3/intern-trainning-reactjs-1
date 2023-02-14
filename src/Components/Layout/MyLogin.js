@@ -1,6 +1,7 @@
 import React from 'react'
 import './MyLogin.css'
 import * as Tabs from '@radix-ui/react-tabs';
+
 export default function MyLogin() {
     return (
         <div className='container-login'>
@@ -17,16 +18,16 @@ export default function MyLogin() {
                     </Tabs.List>
                     <Tabs.Content className="TabsContent" value="tab1">
                         <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="name">
-                                Name
-                            </label>
-                            <input className="Input" id="name" defaultValue="Pedro" />
-                        </fieldset>
-                        <fieldset className="Fieldset">
                             <label className="Label" htmlFor="username">
                                 Username
                             </label>
-                            <input className="Input" id="username" defaultValue="Jonh" />
+                            <input className="Input input-valid" id="username" defaultValue="jonh" pattern="[a-z, 0-9]*" />
+                        </fieldset>
+                        <fieldset className="Fieldset">
+                            <label className="Label" htmlFor="name">
+                                Password
+                            </label>
+                            <input className="Input input-valid" id="name" type="password" defaultValue="pedro" pattern="[a-z, A-Z, 0-9]*" />
                         </fieldset>
                         <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
                             <button className="Button green">Login</button>

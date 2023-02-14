@@ -49,7 +49,6 @@ export default function MyTodo() {
                                 currentUser={currentUser}
                                 updateUser={updateUser}
                             />
-                            <div className='image-upload-user' />
                         </div>
                     ) : (
                         <div className="flex-large1">

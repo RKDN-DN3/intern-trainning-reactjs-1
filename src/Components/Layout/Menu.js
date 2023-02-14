@@ -22,7 +22,7 @@ const HomePage = () => {
                     <Menubar.Trigger className="MenubarTrigger"><Link className='item' to="/profile">Profile</Link></Menubar.Trigger>
                 </Menubar.Menu>
                 <Menubar.Menu>
-                    <Menubar.Trigger className="MenubarTrigger"><Link className='item' to="/list">ListUsers</Link></Menubar.Trigger>
+                    <Menubar.Trigger className="MenubarTrigger"><Link className='item' to="/todoReudx">TodoRedux</Link></Menubar.Trigger>
                 </Menubar.Menu>
 
                 <Menubar.Menu>

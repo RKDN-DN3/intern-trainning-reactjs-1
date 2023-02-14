@@ -80,10 +80,9 @@
 .flex-row .flex-large {
     width: 40%;
     /* border: 1px solid red; */
-    margin-left: 73px;
+    margin-left: 25px;
 
 }
-
 
 .flex-large h2 {
     font-weight: 600;

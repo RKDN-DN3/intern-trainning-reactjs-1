@@ -11,6 +11,10 @@ body::-webkit-scrollbar-thumb {
     border-radius: 50px;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .container-home {
     width: 100%;
     height: 100vh;
@@ -92,7 +96,7 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     background-color: #0f1221;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     padding: 0;
 }
 
@@ -134,7 +138,7 @@ body::-webkit-scrollbar-thumb {
     padding: 10px 20px;
     cursor: pointer;
     width: 120px;
-    bottom: 20%;
+    bottom: 30%;
 }
 
 .home-left-two button:hover {
@@ -148,14 +152,13 @@ body::-webkit-scrollbar-thumb {
     position: absolute;
     padding-top: 8%;
     width: 40%;
-    height: 100%;
+    height: 78%;
     right: 10%;
     background-image: url(../access/main_image_1.png);
     background-size: 100% 100%;
 }
 
 .container-tab-home-three {
-    width: 100%;
     height: 80vh;
     background-color: #f6f6fc;
     display: grid;

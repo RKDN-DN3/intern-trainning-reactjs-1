@@ -109,14 +109,14 @@ class MyRegister extends React.Component {
 
     render() {
         return (
-            <div class="container-register">
+            <div className="container-register">
                 <div className="tab-register">
                     <h5 className="title-h5">
                         Sign up for an account
                     </h5>
                     <form className="form-tab-register"
                         onSubmit={this.handleSubmit}>
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="Label" htmlFor="name">
                                 Name
                             </label>
@@ -132,7 +132,7 @@ class MyRegister extends React.Component {
                             <div className="text-error">{this.state.errors.username}</div>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="Label" htmlFor="name">
                                 Email
                             </label>
@@ -148,7 +148,7 @@ class MyRegister extends React.Component {
                             <div className="text-error">{this.state.errors.email}</div>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="Label" htmlFor="name">
                                 Password
                             </label>
@@ -164,7 +164,7 @@ class MyRegister extends React.Component {
                             <div className="text-error">{this.state.errors.password}</div>
                         </div>
 
-                        <div class="form-group">
+                        <div className="form-group">
                             <label className="Label" htmlFor="name">
                                 Confirm Password
                             </label>

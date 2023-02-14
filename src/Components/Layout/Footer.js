@@ -16,10 +16,10 @@ const Footer = () => {
                     <div className='contact-child'>myInfo@gmail.com</div>
                     <div className='contact-child'>Help Center</div>
                     <div className='contact-child  icon-footer'>
-                        <i class="fa-brands fa-instagram"></i>
-                        <i class="fa-brands fa-facebook-f"></i>
-                        <i class="fa-brands fa-twitter"></i>
-                        <i class="fa-regular fa-envelope"></i>
+                        <i className="fa-brands fa-instagram"></i>
+                        <i className="fa-brands fa-facebook-f"></i>
+                        <i className="fa-brands fa-twitter"></i>
+                        <i className="fa-regular fa-envelope"></i>
                     </div>
                 </div>
                 <div className='footer-contact'>
@@ -38,7 +38,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className='footer-make'>
-                <i class="fa-regular fa-heart"></i>
+                <i className="fa-regular fa-heart"></i>
                 <span>Made With Love</span>
             </div>
         </div>

@@ -13,6 +13,7 @@ import MyInfo from './Layout/MyInfo';
 import MyLogin from './Layout/MyLogin';
 import MyRegister from './Layout/MyRegister';
 import MyForgotPsw from './Layout/MyForgotPsw';
+import TabInfo from './Views/TabInfo';
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="mytodo" element={<MyTodo />} />
         <Route path="profile" element={<MyInfo />} />
-        <Route path="list" element={<MyList />} />
+        <Route path="profile/:id/info" element={<TabInfo />} />
+        <Route path="todoReudx" element={<MyList />} />
         <Route path="login" element={<MyLogin />} />
         <Route path="register" element={<MyRegister />} />
         <Route path="forgot" element={<MyForgotPsw />} />

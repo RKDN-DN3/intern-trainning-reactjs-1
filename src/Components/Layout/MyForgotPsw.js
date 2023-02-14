@@ -2,6 +2,8 @@ import React from 'react'
 import './MyForgotPsw.css'
 import iconpsw from '../access/icon-forgot.png'
 import yourLogo from '../access/your-logo.png'
+
+
 export default function MyForgotPsw() {
     return (
         <div className='container-forgot'>
@@ -12,8 +14,8 @@ export default function MyForgotPsw() {
                     <span>We received a request to reset your password. Don’t worry,
                         we are here to help you.
                     </span>
-                    <input placeholder='Email'></input>
-                    <button>Reset My Password</button>
+                    <input id="email" className="input" placeholder='Email'></input>
+                    <button type='submit'>Reset My Password</button>
                     <p>Didn’t request a password reset?
                         You can safely ignore this message.
                     </p>
@@ -24,10 +26,10 @@ export default function MyForgotPsw() {
                     <img src={yourLogo} alt=''></img>
                 </div>
                 <div className='content-network'>
-                    <i class="fa-brands fa-instagram"></i>
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-regular fa-envelope"></i>
+                    <i className="fa-brands fa-instagram"></i>
+                    <i className="fa-brands fa-facebook-f"></i>
+                    <i className="fa-brands fa-twitter"></i>
+                    <i className="fa-regular fa-envelope"></i>
                 </div>
                 <div className='content-note'>
                     <p>Copyright © 2021 Your Brand, All rights reserved.</p>
