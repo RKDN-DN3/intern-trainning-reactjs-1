@@ -108,3 +108,34 @@
     background: #414141;
     color: white;
 }
+
+@media(min-width: 950px) and (max-width: 1280px) {
+    .tab-register {
+        width: 85%;
+    }
+}
+
+@media(min-width: 834px) and (max-width: 1112px) {
+    .tab-register {
+        width: 83%;
+        height: 64%;
+    }
+
+    .title-h5 {
+        margin-left: 27%;
+        font-size: 31px;
+    }
+
+    .tab-image-register {
+        display: none;
+    }
+
+    .form-tab-register {
+        width: 77%;
+        top: 50%;
+        transform: translateY(-44%);
+        left: 8%;
+        height: 58%;
+        padding: 28px;
+    }
+}

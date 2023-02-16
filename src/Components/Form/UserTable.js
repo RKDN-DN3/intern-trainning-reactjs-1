@@ -30,7 +30,7 @@ const UserTable = (props) => {
                     :
                     (
                         <tr>
-                            <td colSpan={3}>No users</td>
+                            <td className='no-user' colSpan={3}>No users</td>
                         </tr>
                     )
                 }

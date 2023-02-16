@@ -186,3 +186,56 @@
     font-size: 27px;
     background-color: #2895ff;
 }
+
+/* desktop */
+@media(min-width: 900px) and (max-width: 1440px) {
+    .info-container {
+        height: 60%;
+    }
+
+    .container-view-info {
+        margin-top: 0;
+    }
+}
+
+@media(min-width: 950px) and (max-width: 1280px) {
+    .info-container {
+        width: 76%;
+
+        height: 60%;
+    }
+
+    .container-view-info {
+        margin-top: 0;
+    }
+}
+
+@media(min-width: 800px) and (max-width: 1280px) {
+    .info-container {
+        height: 70%;
+    }
+
+    .container-view-info {
+        margin-top: 0;
+    }
+}
+
+/* ipad */
+
+@media(min-width: 834px) and (max-width: 1112px) {
+    .container-view-info p {
+        top: 10%;
+    }
+
+    .info-container {
+        top: 19%;
+        width: 88%;
+        height: 58%;
+    }
+
+    .view-contact {
+        width: 51%;
+    }
+}
+
+@media(min-width: 1204px) and (max-width: 1336px) {}

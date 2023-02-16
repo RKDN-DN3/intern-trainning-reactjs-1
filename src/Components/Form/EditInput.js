@@ -14,29 +14,30 @@ export default function EditInput(props) {
     // console.log('check editlist', editList);
 
     const dispatch = useDispatch()
-    // const editSubmit = (event) => {
-    //     event.preventDefault()
-    //     if (!user.name || !user.username) {
-    //         alert('missing input')
-    //         return
-    //     } else {
-    //         dispatch(editList(user))
-    //         // console.log(user);
-    //         props.setEditing(false)
-    //         setUser({
-    //             name: '',
-    //             username: '',
-    //             title: '',
-    //             email: ''
-    //         })
-    //         console.log(editList(user));
-    //     }
-    // }
+    const editSubmit = (event) => {
+        event.preventDefault()
+        if (!user.name || !user.username) {
+            alert('missing input')
+            return
+        } else {
+            dispatch(editList(user))
+            // console.log(user);
+            props.setEditing(false)
+            setUser({
+                name: '',
+                username: '',
+                title: '',
+                email: ''
+            })
+            console.log(editList(user));
+        }
+    }
     return (
         <div className='form-input input-edit'>
             <form
+                onSubmit={editSubmit}
             >
-                <div className="Fieldset">
+                <div className="Fieldset input-list">
                     <input className="Input" type="text" name="name"
                         placeholder='Name'
                         value={user.name}
@@ -48,13 +49,13 @@ export default function EditInput(props) {
                         value={user.username}
                         onChange={handleOnchange} />
                 </div>
-                <div className="Fieldset">
+                <div className="Fieldset input-list">
                     <input className="Input" type="email" name="email"
                         placeholder='Email'
                         value={user.email}
                         onChange={handleOnchange} />
                 </div>
-                <button onClick={() => props.updateUser(user)} type='submit' value='Add' className='btn-add add-input btn-update'>Upload info</button>
+                <button type='submit' value='Add' className='btn-add add-input btn-update'>Upload info</button>
                 <button onClick={() => props.setEditing(false)} className="btn-cancel">Cancer</button>
             </form>
             <textarea className='class-title' type="text"

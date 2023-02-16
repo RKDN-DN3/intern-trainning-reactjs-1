@@ -212,3 +212,34 @@ button {
     color: #EFF5F5;
     font-size: 20px;
 }
+
+
+@media(min-width: 834px) and (max-width: 1112px) {
+    .nav-menu {
+        width: 65%;
+    }
+
+    .container-footer {
+        height: 23vh;
+    }
+
+    .contact-footer {
+        font-size: 20px;
+        gap: 0;
+        margin-left: 5%;
+    }
+
+    .contact-child {
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 1024px) and (max-width: 1336px) {
+    .container-home {
+        height: 70vh;
+    }
+
+    .container-footer {
+        height: 19vh;
+    }
+}

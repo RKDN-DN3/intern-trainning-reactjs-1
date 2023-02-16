@@ -263,3 +263,10 @@ button {
 .Button.small:hover {
     border: 1px solid #383a37;
 }
+
+@media(min-width: 834px) and (max-width: 1112px) {
+    .btn-cancel {
+        position: absolute;
+        margin-top: 21%;
+    }
+}

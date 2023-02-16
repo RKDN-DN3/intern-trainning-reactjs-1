@@ -127,3 +127,46 @@ li {
 .btn-Edit-reudx:hover {
     background-color: #537FE7;
 }
+
+@media(min-width: 950px) and (max-width: 1280px) {
+    .form-input textarea {
+        margin-left: 1%;
+        margin-top: 1%;
+    }
+
+    .input-list {
+        margin-top: 1%;
+        width: 90% !important;
+    }
+}
+
+@media(min-width: 834px) and (max-width: 1112px) {
+    .form-input {
+        display: flex;
+        flex-direction: column;
+        height: 85%;
+        padding-left: 65px;
+    }
+
+    .form-list h2 {
+        margin-left: 35%;
+    }
+
+    .form-list {
+        width: 79% !important;
+        position: absolute;
+    }
+
+    .btn-add {
+        position: relative;
+        bottom: -63%;
+        margin-left: 25%;
+    }
+
+    .form-input textarea {
+        margin-left: 0;
+        height: 30%;
+        position: relative;
+        bottom: 12%;
+    }
+}

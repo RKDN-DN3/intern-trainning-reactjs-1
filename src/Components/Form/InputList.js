@@ -30,7 +30,7 @@ export default function InputList() {
     return (
         <div className='form-input'>
             <form onSubmit={addSubmit}>
-                <div className="Fieldset">
+                <div className="Fieldset input-list">
                     <input className="Input" type="text" name="name"
                         placeholder='Name'
                         value={user.name}
@@ -41,7 +41,7 @@ export default function InputList() {
                         value={user.username}
                         onChange={handleInputChange} />
                 </div>
-                <div className="Fieldset">
+                <div className="Fieldset input-list">
                     <input className="Input" type="email" name="email"
                         placeholder='Email'
                         value={user.email}
