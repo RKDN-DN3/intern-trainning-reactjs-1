@@ -9,7 +9,6 @@ export default function InputList() {
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setUser({ ...user, [name]: value })
-        console.log(value);
     }
 
     const dispatch = useDispatch()
@@ -19,7 +18,6 @@ export default function InputList() {
             alert('missing input')
             return
         } else {
-
             dispatch(addList(user.name, user.username, user.title, user.email))
             setUser({
                 name: '',

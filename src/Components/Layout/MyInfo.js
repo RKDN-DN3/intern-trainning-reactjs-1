@@ -14,8 +14,8 @@ export default function MyInfo() {
                 </header>
                 <main className="leaderboard__profiles">
                     {myList.map(list => (
-                        <Link className='item-info' to={{ pathname: `/profile/${list.id}/info` }}>
-                            <article key={list.id} className="leaderboard__profile">
+                        <Link key={list.id} className='item-info' to={{ pathname: `/profile/${list.id}/info` }}>
+                            <article className="leaderboard__profile">
                                 <img src={list.image} alt="Mark Zuckerberg" className="leaderboard__picture" />
                                 <span className="leaderboard__name">{list.username} {list.name}</span>
                                 <span className="leaderboard__value">{list.email}</span>
@@ -30,3 +30,5 @@ export default function MyInfo() {
 
     )
 }
+
+//src={`https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 100) + 1}.jpg`} random image

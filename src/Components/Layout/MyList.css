@@ -45,6 +45,10 @@ li {
     height: 400px !important;
 }
 
+.row-redux .list-edit {
+    background-color: rgba(177, 177, 125, 0.26);
+}
+
 .form-list h2 {
     margin-top: 5px;
 }
@@ -98,10 +102,28 @@ li {
     outline: none;
     font-weight: 200;
     color: #fff;
-    background-color: #ef4444;
+    background-color: #ec3636;
+    cursor: pointer;
+}
+
+
+
+.btn-Edit-reudx {
+    margin-left: 5px;
+    height: 28px;
+    padding: 3px 20px;
+    border-radius: 5px;
+    outline: none;
+    font-weight: 200;
+    color: #fff;
+    background-color: #4066be;
     cursor: pointer;
 }
 
 .btn-delete-reudx:hover {
-    background-color: #8d2a2a;
+    background-color: #c53f3f;
+}
+
+.btn-Edit-reudx:hover {
+    background-color: #537FE7;
 }

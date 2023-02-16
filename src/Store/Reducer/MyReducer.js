@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 const myListSlice = createSlice({
     name: 'myList',
     initialState: {
@@ -74,12 +74,45 @@ const myListSlice = createSlice({
                 }
             }
         },
+        // editList: {
+        //     // reducer(state, action) {
+        //     //     state.allMyList.unshift(action.payload)
+        //     // },
+        //     // prepare(name, username, title, email){
+        //     //     return {
+
+        //     //     }
+        //     // }
+
+        //     // allMyList = state.allMyList.map((list) =>
+        //     //     id === list.id ? { ...list, name, username, title, email } : list
+        //     // )
+        // },
+        // editList: (state, action) => {
+        //     return [...state.allMyList, action.payload]
+        // },
+        editList: (state, action) => {
+            const todoId = action.payload
+            // state.allMyList = todoId ? { ...state, todoId } : state
+            // console.log('check state:', state.allMyList);
+            state.allMyList = state.allMyList.map((todo) => todo.id === todoId.id ? { ...todo, todoId } : todo)
+            // state.allMyList = state.allMyList.map((todo) => {
+            //     if (todo.id === todoId.id)
+            //         return {
+            //             ...state.allMyList, todoId
+            //         }
+            // })
+            // return {
+            //     ...state,
+            //     todoId
+            // }
+        },
         deleteTodo(state, action) {
             const todoId = action.payload
             state.allMyList = state.allMyList.filter(todo => todo.id !== todoId)
-        }
-    }
-})
+        },
+    },
+});
 
 //Reducer
 const myListReducer = myListSlice.reducer
@@ -88,5 +121,5 @@ const myListReducer = myListSlice.reducer
 //Selector
 export const myListSelector = state => state.myListReducer.allMyList
 //export action
-export const { addList, deleteTodo } = myListSlice.actions
+export const { addList, deleteTodo, editList } = myListSlice.actions
 export default myListReducer
