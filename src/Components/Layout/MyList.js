@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { deleteTodo, myListSelector, editList } from '../../Store/Reducer/MyReducer'
+import { deleteTodo, myListSelector } from '../../Store/Reducer/MyReducer'
 import InputList from '../Form/InputList'
 import { useDispatch } from 'react-redux'
-import { newList } from '../../Store/Actions/Action'
 import './MyList.css'
 import EditInput from '../Form/EditInput'
 const MyList = () => {
     const myList = useSelector(myListSelector)
-    const [users, setUsers] = useState(myList)
     const dispatch = useDispatch()
-
     const handleDelete = todoId => {
         dispatch(deleteTodo(todoId))
     }
@@ -19,9 +16,7 @@ const MyList = () => {
     const [editing, setEditing] = useState(false)
     const initialFormState = { id: null, name: '', username: '', title: '' }
     const [currentUser, setCurrentUser] = useState(initialFormState)
-
     const handleEdit = (todoId) => {
-        // dispatch(editList(todoId))
         setEditing(true)
         setCurrentUser({
             id: todoId.id, name: todoId.name, username: todoId.username,
@@ -29,10 +24,11 @@ const MyList = () => {
         })
         // handleSelectTodo(todoId)
     }
-    const updateUser = (todoId) => {
-        setEditing(false)
-        setUsers(dispatch(editList(todoId)))
-    }
+    // const updateUser = (todoId) => {
+    //     setEditing(false)
+    //     // dispatch(editList(todoId))
+    //     // console.log('lisst', editList(todoId));
+    // }
 
     return (
         <div className="container">
@@ -44,7 +40,6 @@ const MyList = () => {
                             <EditInput
                                 currentUser={currentUser}
                                 setEditing={setEditing}
-                                updateUser={updateUser}
                             />
                         </div>
                     ) : (

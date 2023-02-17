@@ -25,6 +25,8 @@ export default function InputList() {
                 title: '',
                 email: ''
             })
+            console.log(user);
+
         }
     }
     return (

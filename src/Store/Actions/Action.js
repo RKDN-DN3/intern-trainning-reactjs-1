@@ -1,12 +1,12 @@
 
 import { createAction } from '@reduxjs/toolkit';
 
+export const editList = createAction('editList', ({ data }) => {
+    return {
+        payload: data,
+    };
+});
 
-// export const newList = createAction('editList', ({ data }) => {
-//     return {
-//         payload: data,
-//     };
-// });
 
 // export const addList = (data) => {
 //     return {

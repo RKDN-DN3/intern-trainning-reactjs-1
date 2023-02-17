@@ -2,24 +2,51 @@ import React from 'react'
 import './MyForgotPsw.css'
 import iconpsw from '../access/icon-forgot.png'
 import yourLogo from '../access/your-logo.png'
+import { useFormik } from 'formik';
 
+
+const validate = (values) => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Required'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address'
+    }
+
+    return errors
+}
 
 export default function MyForgotPsw() {
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validate,
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2))
+        },
+    })
     return (
         <div className='container-forgot'>
             <div className='content-top-forgot'>
-                <div className='content-icon-forgot'>
+                <form
+                    onSubmit={formik.handleSubmit}
+                    className='content-icon-forgot'>
                     <img className='image-psw' src={iconpsw} alt=''></img>
                     <div className='title-forgot'>Resest Your Password</div>
                     <span>We received a request to reset your password. Don’t worry,
                         we are here to help you.
                     </span>
-                    <input id="email" className="input" placeholder='Email'></input>
+                    <input className='input' type="email" name="email" id="email" placeholder='Email'
+                        onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
+                    {formik.touched.email && formik.errors.email && (
+                        <span className='err-email'>{formik.errors.email}</span>
+                    )}
                     <button type='submit'>Reset My Password</button>
                     <p>Didn’t request a password reset?
                         You can safely ignore this message.
                     </p>
-                </div>
+                </form>
             </div>
             <div className='content-mid-forgot'>
                 <div className='your-logo'>

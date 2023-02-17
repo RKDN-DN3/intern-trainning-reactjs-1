@@ -6,46 +6,45 @@
 .container-register {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(#aa4b6b, #6b6b83, #3b8d99);
+    background-image: url(../access/bg.jpg.webp);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+
 }
 
 
 .tab-register {
     position: absolute;
-    border-radius: 10px;
-    background: linear-gradient(#7978FF 0%, #C47AFF 100%);
-    width: 60%;
-    height: 60%;
-    top: 54%;
+    width: 100%;
+    height: 100%;
+    top: 50%;
     left: 50%;
+    background-color: #0e0e0e45;
     transform: translate(-50%, -50%);
-    box-shadow:
-        0 2.8px 2.2px rgb(0 0 0 / 3%),
-        0 6.7px 5.3px rgb(0 0 0 / 5%),
-        0px 17px 10px rgb(0 0 0 / 44%),
-        0px -20px 17.9px rgb(0 0 0 / 7%),
-        1px 20px 33.4px rgb(0 0 0 / 9%),
-        18px 20px 20px rgb(0 0 0 / 12%)
 }
 
 .title-h5 {
-    margin-top: 26px;
-    margin-left: 52%;
+    position: absolute;
+    color: white;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
     font-weight: 800;
     font-size: 33px;
 }
 
 .form-tab-register {
     position: absolute;
-    width: 39%;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 4%;
-    height: 77%;
+    top: 31%;
+    width: 49%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50%;
     padding: 32px;
     border-radius: 5px;
     font-family: inherit;
-    background-color: white;
 }
 
 .form-group {
@@ -59,20 +58,29 @@
     border-radius: 4px;
     font-size: 15px;
     line-height: 1;
-    color: var(--violet11);
-    box-shadow: 0 0 0 1px var(--violet7);
+    color: #fff;
+    box-shadow: 0 0 0 1px #fff;
     height: 35px;
     width: 100%;
+    font-size: 15px;
 }
 
+.Input:focus {
+    box-shadow: 0 0 0 1px black;
+}
+
+.lable-register {
+    color: #fff;
+    font-size: 15px;
+}
 
 .text-error {
     position: absolute;
-    font-size: 13px;
-    margin-top: 1.2%;
-    margin-left: 40%;
+    font-size: 17px;
+    margin-top: -3.8%;
     cursor: none;
     color: red;
+    right: 73px;
 }
 
 
@@ -90,23 +98,90 @@
 
 .btn-myregister {
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     width: 80px;
     height: 30px;
-    margin-top: 5%;
-    padding: 4px;
+    padding: 7px 20px;
     display: flex;
-    text-align: center;
+    font-size: 17px;
+    font-weight: 500;
     justify-content: center;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #212121;
-    color: white;
+    background-color: var(--green4);
+    color: var(--green11);
     border: none;
 }
 
 .btn-myregister:hover {
-    background: #414141;
+    background-color: var(--green5);
+}
+
+.forgot-psw {
+    text-decoration: none;
+    position: absolute;
+    right: 8%;
     color: white;
+}
+
+.forgot-psw:hover {
+    color: black;
+}
+
+.or-singin {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
+
+.face {
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    width: 50%;
+    height: 8%;
+    justify-content: center;
+}
+
+.sing-or {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 0;
+    margin: 0 10px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+
+}
+
+.sing-or:nth-child(1):hover {
+    color: #205295;
+    background-color: #205295;
+    border: 1px solid #205295;
+}
+
+.sing-or:nth-child(2):hover {
+    color: #82C3EC;
+    background-color: #82C3EC;
+    border: 1px solid #82C3EC;
+}
+
+.sing-or:hover i {
+    color: #fff;
+    display: block;
+    margin-left: 35px;
+}
+
+.sing-or i {
+    display: none;
+    position: absolute;
+    font-size: 30px;
 }
 
 @media(min-width: 950px) and (max-width: 1280px) {

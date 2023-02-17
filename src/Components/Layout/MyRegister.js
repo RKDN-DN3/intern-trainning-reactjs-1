@@ -1,6 +1,7 @@
 
 
 import React from "react";
+import { Link } from "react-router-dom";
 import "./MyRegister.css";
 class MyRegister extends React.Component {
     constructor() {
@@ -117,7 +118,7 @@ class MyRegister extends React.Component {
                     <form className="form-tab-register"
                         onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                            <label className="Label" htmlFor="name">
+                            <label className="Label lable-register" htmlFor="name">
                                 Name
                             </label>
                             <input
@@ -133,7 +134,7 @@ class MyRegister extends React.Component {
                         </div>
 
                         <div className="form-group">
-                            <label className="Label" htmlFor="name">
+                            <label className="Label lable-register" htmlFor="name">
                                 Email
                             </label>
                             <input
@@ -149,7 +150,7 @@ class MyRegister extends React.Component {
                         </div>
 
                         <div className="form-group">
-                            <label className="Label" htmlFor="name">
+                            <label className="Label lable-register" htmlFor="name">
                                 Password
                             </label>
                             <input
@@ -165,7 +166,7 @@ class MyRegister extends React.Component {
                         </div>
 
                         <div className="form-group">
-                            <label className="Label" htmlFor="name">
+                            <label className="Label lable-register" htmlFor="name">
                                 Confirm Password
                             </label>
                             <input
@@ -182,10 +183,13 @@ class MyRegister extends React.Component {
                             </div>
                         </div>
                         <button className="btn-myregister">Register</button>
+                        <Link className='forgot-psw' to="/forgot">Forgot Password</Link>
+                        <span className="or-singin">Or Sing In with ?</span>
+                        <div className="face">
+                            <div className="sing-or"><i class="fa-brands fa-facebook-f"></i>FaceBook</div>
+                            <div className="sing-or"><i class="fa-brands fa-twitter"></i>Twitter</div>
+                        </div>
                     </form>
-                    <div className="tab-image-register">
-
-                    </div>
                 </div>
             </div>
         );

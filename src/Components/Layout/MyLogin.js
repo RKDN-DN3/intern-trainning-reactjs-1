@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './MyLogin.css'
-import * as Tabs from '@radix-ui/react-tabs';
+import * as Tabs from '@radix-ui/react-tabs'
+import PasswordChecklist from "react-password-checklist"
 
 export default function MyLogin() {
+    const [password, setPassword] = useState("")
+    const [passwordAgain, setPasswordAgain] = useState("")
     return (
         <div className='container-login'>
             <div className='content-login'>
@@ -21,14 +24,20 @@ export default function MyLogin() {
                             <label className="Label" htmlFor="username">
                                 Username
                             </label>
-                            <input className="Input input-valid" id="username" defaultValue="jonh" pattern="[a-z, 0-9]*" />
+                            <input className="Input input-valid" id="username" defaultValue="manhcuong2603" pattern="[a-z, 0-9]*" />
                         </fieldset>
                         <fieldset className="Fieldset">
                             <label className="Label" htmlFor="name">
                                 Password
                             </label>
-                            <input className="Input input-valid" id="name" type="password" defaultValue="pedro" pattern="[a-z, A-Z, 0-9]*" />
+                            <input className="Input input-valid" id="name" type="password" pattern="[a-z, A-Z, 0-9]*" />
                         </fieldset>
+                        <div className='for-fun'>
+                            <div class="spinner">
+                                <div class="bubble-1"></div>
+                                <div class="bubble-2"></div>
+                            </div>
+                        </div>
                         <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
                             <button className="Button green">Login</button>
                         </div>
@@ -44,20 +53,38 @@ export default function MyLogin() {
                             <label className="Label" htmlFor="newPassword">
                                 New password
                             </label>
-                            <input className="Input" id="newPassword" type="password" />
+                            <input className="Input" id="newPassword" type="password" onChange={e => setPassword(e.target.value)} />
                         </fieldset>
                         <fieldset className="Fieldset">
                             <label className="Label" htmlFor="confirmPassword">
                                 Confirm password
                             </label>
-                            <input className="Input" id="confirmPassword" type="password" />
+                            <input className="Input" id="confirmPassword" type="password" onChange={e => setPasswordAgain(e.target.value)} />
                         </fieldset>
                         <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
                             <button className="Button green">Change password</button>
                         </div>
+
+                        <PasswordChecklist
+                            rules={["minLength", "specialChar", "number", "capital", "match"]}
+                            minLength={8}
+                            value={password}
+                            valueAgain={passwordAgain}
+                            messages={{
+                                minLength: "Password length more than 8 characters",
+                                specialChar: "Password with special characters",
+                                number: "Password with number",
+                                capital: "Password has 1 capital letter",
+                                match: "No password match",
+                            }}
+                        />
                     </Tabs.Content>
                 </Tabs.Root>
-                <div className='image-login'></div>
+                <span className="or-singin or-login">Or Sing In with ?</span>
+                <div className="face face-login">
+                    <div className="sing-or"><i class="fa-brands fa-facebook-f"></i>FaceBook</div>
+                    <div className="sing-or"><i class="fa-brands fa-twitter"></i>Twitter</div>
+                </div>
             </div>
         </div>
     )

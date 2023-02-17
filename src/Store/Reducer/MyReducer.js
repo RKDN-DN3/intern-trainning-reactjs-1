@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 const myListSlice = createSlice({
     name: 'myList',
     initialState: {
@@ -93,23 +93,12 @@ const myListSlice = createSlice({
         // },
         editList: (state, action) => {
             const todoId = action.payload
-            // state.allMyList = todoId ? { ...state, todoId } : state
-            // console.log('check state:', state.allMyList);
-            state.allMyList = state.allMyList.map((todo) => todo.id === todoId.id ? { ...todo, todoId } : todo)
-            // state.allMyList = state.allMyList.map((todo) => {
-            //     if (todo.id === todoId.id)
-            //         return {
-            //             ...state.allMyList, todoId
-            //         }
-            // })
-            // return {
-            //     ...state,
-            //     todoId
-            // }
+            state.allMyList = state.allMyList.map((todo) => todo.id === todoId.id ? todoId : todo)
         },
         deleteTodo(state, action) {
             const todoId = action.payload
             state.allMyList = state.allMyList.filter(todo => todo.id !== todoId)
+            // console.log('check state:', state.allMyList);
         },
     },
 });

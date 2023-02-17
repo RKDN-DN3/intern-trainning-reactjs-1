@@ -5,13 +5,10 @@ import { useDispatch } from 'react-redux'
 import '../Layout/MyList.css'
 export default function EditInput(props) {
     const [user, setUser] = useState(props.currentUser)
-    // console.log(user)
     const handleOnchange = (e) => {
         const { name, value } = e.target
         setUser({ ...user, [name]: value })
-        // console.log(value);
     }
-    // console.log('check editlist', editList);
 
     const dispatch = useDispatch()
     const editSubmit = (event) => {
@@ -23,13 +20,7 @@ export default function EditInput(props) {
             dispatch(editList(user))
             // console.log(user);
             props.setEditing(false)
-            setUser({
-                name: '',
-                username: '',
-                title: '',
-                email: ''
-            })
-            console.log(editList(user));
+            console.log(editList(user.name && user.username));
         }
     }
     return (

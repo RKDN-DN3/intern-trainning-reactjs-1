@@ -140,6 +140,8 @@ li {
     }
 }
 
+
+
 @media(min-width: 834px) and (max-width: 1112px) {
     .form-input {
         display: flex;
