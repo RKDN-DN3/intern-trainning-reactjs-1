@@ -15,7 +15,7 @@ const UserTable = (props) => {
                                 <div className="col col-4 btn-table">
                                     <button className="btn-edit"
                                         onClick={() => {
-                                            props.editRow(user)
+                                            props.editUser(user)
                                         }}
                                     >Edit
                                     </button>

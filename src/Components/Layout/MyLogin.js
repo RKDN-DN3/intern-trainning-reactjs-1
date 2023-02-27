@@ -4,8 +4,18 @@ import * as Tabs from '@radix-ui/react-tabs'
 import PasswordChecklist from "react-password-checklist"
 
 export default function MyLogin() {
+    const [users, setUsers] = useState('')
     const [password, setPassword] = useState("")
     const [passwordAgain, setPasswordAgain] = useState("")
+    const handleName = (e) => {
+        const { password, value } = e.target
+        setPassword({ ...password, [password]: value })
+        console.log(value);
+    }
+    const onSubmit = () => {
+        setPassword('cuong')
+        setPassword('')
+    }
     return (
         <div className='container-login'>
             <div className='content-login'>
@@ -24,22 +34,30 @@ export default function MyLogin() {
                             <label className="Label" htmlFor="username">
                                 Username
                             </label>
-                            <input className="Input input-valid" id="username" defaultValue="manhcuong2603" pattern="[a-z, 0-9]*" />
+                            <input
+                                onChange={handleName}
+                                className="Input input-valid" id="username"
+                                defaultValue="manhcuong2603" pattern="[a-z, 0-9]*"
+                            />
                         </fieldset>
                         <fieldset className="Fieldset">
                             <label className="Label" htmlFor="name">
                                 Password
                             </label>
-                            <input className="Input input-valid" id="name" type="password" pattern="[a-z, A-Z, 0-9]*" />
+                            <input
+                                onChange={handleName}
+                                className="Input input-valid" id="name"
+                                type="password" pattern="[a-z, A-Z, 0-9]*"
+                            />
                         </fieldset>
                         <div className='for-fun'>
-                            <div class="spinner">
-                                <div class="bubble-1"></div>
-                                <div class="bubble-2"></div>
+                            <div className="spinner">
+                                <div className="bubble-1"></div>
+                                <div className="bubble-2"></div>
                             </div>
                         </div>
                         <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
-                            <button className="Button green">Login</button>
+                            <button onClick={() => onSubmit()} className="Button green">Login</button>
                         </div>
                     </Tabs.Content>
                     <Tabs.Content className="TabsContent" value="tab2">
@@ -82,8 +100,8 @@ export default function MyLogin() {
                 </Tabs.Root>
                 <span className="or-singin or-login">Or Sing In with ?</span>
                 <div className="face face-login">
-                    <div className="sing-or"><i class="fa-brands fa-facebook-f"></i>FaceBook</div>
-                    <div className="sing-or"><i class="fa-brands fa-twitter"></i>Twitter</div>
+                    <div className="sing-or"><i className="fa-brands fa-facebook-f"></i>FaceBook</div>
+                    <div className="sing-or"><i className="fa-brands fa-twitter"></i>Twitter</div>
                 </div>
             </div>
         </div>

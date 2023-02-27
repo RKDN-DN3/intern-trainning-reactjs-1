@@ -2,6 +2,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 export const editList = createAction('editList', ({ data }) => {
+    //
     return {
         payload: data,
     };

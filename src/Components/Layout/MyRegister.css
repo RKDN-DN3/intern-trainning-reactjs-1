@@ -51,7 +51,22 @@
     border-radius: 10px;
     font-size: 17px;
     width: 93%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding: 5px 0;
+}
+
+.form-input-rg {
+    margin-top: -80px;
+}
+
+.err {
+    position: absolute;
+    color: red;
+    font-size: 15px;
+}
+
+.className {
+    display: flex;
 }
 
 .form-group .Input {

@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { deleteTodo, myListSelector } from '../../Store/Reducer/MyReducer'
+import React, { useState, useEffect } from 'react'
 import InputList from '../Form/InputList'
 import { useDispatch } from 'react-redux'
 import './MyList.css'
 import EditInput from '../Form/EditInput'
+import axios from "axios";
+
+
+
 const MyList = () => {
-    const myList = useSelector(myListSelector)
+    // const myList = useSelector(myListSelector)
     const dispatch = useDispatch()
-    const handleDelete = todoId => {
-        dispatch(deleteTodo(todoId))
-    }
+
 
     //EDIT
     const [editing, setEditing] = useState(false)
@@ -22,14 +22,35 @@ const MyList = () => {
             id: todoId.id, name: todoId.name, username: todoId.username,
             title: todoId.title, email: todoId.email
         })
-        // handleSelectTodo(todoId)
     }
-    // const updateUser = (todoId) => {
-    //     setEditing(false)
-    //     // dispatch(editList(todoId))
-    //     // console.log('lisst', editList(todoId));
-    // }
 
+    const [user, setUser] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:3030/users').then((response) => {
+            setUser(response.data)
+            console.log('check list user', response.data);
+        })
+
+    }, [])
+    // const handleDelete = todoId => {
+    //     // dispatch(deleteTodo(todoId))
+    //     axios
+    //         .delete(`http://localhost:3030/users/${todoId}`)
+    //     setUser(user);
+    //     alert('deleted successfully!')
+    //     // console.log('check id', todoId);
+    // }
+    const handleDelete = (todoId) => {
+        console.log('check id', todoId.id);
+        // fetch(`http://localhost:3030/users/${todoId}`, {
+        //     method: 'DELETE'
+        // })
+        //     .then(response => response.json())
+        //     .then(() => {
+        //         const updatedBooks = user.user.filter(item => item.todoId !== todoId)
+        //         setUser(updatedBooks)
+        //     })
+    }
     return (
         <div className="container">
             <div className='home-add todo-redux'>
@@ -49,17 +70,16 @@ const MyList = () => {
                             />
                         </div>
                     )}
-
                     <div className="flex-large">
                         <h2>View users</h2>
                         <div className='Add-user'>
-                            {myList.length > 0 ?
-                                (myList.map((list, index) => (
+                            {user.length > 0 ?
+                                (user.map((list, index) => (
                                     <li key={list.id} className="table-row-table">
                                         <div className="col col-1 col-table">{index + 1}</div>
                                         <div className="col col-2 col-table">{list.name}</div>
                                         <div className="col col-2 col-table">{list.username}</div>
-                                        <button onClick={handleDelete.bind(this, list.id)} className='btn-delete-reudx'>Delete</button>
+                                        <button onClick={handleDelete.bind(this, list)} className='btn-delete-reudx'>Delete</button>
                                         <button onClick={handleEdit.bind(this, list)} className='btn-Edit-reudx'>Edit</button>
                                     </li>
                                 ))) : (

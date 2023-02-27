@@ -4,17 +4,16 @@ const EditUserForm = (props) => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
-
         setUser({ ...user, [name]: value })
     }
 
     return (
         <form
-        // onSubmit={(event) => {
-        //     event.preventDefault()
-
-        //     props.updateUser(user.id, user)
-        // }}
+            onSubmit={(event) => {
+                event.preventDefault()
+                props.updateUser(user);
+                // console.log('check user', user); thông tin sửa
+            }}
         >
             {/* <label>Name</label> */}
             <div className='add-name'>
@@ -36,7 +35,6 @@ const EditUserForm = (props) => {
             </div>
             <div className='btn'>
                 <button className='btn-update'
-                    onClick={() => props.updateUser(user.id, user)}
                 >
                     Update user
                 </button>
