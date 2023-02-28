@@ -40,6 +40,7 @@ const HomePage = () => {
 
                                 <Menubar.Item className="MenubarItem inset btn-inset"><Link className=' item btn-register' to="/register">Register</Link></Menubar.Item>
                                 <Menubar.Item className="MenubarItem inset btn-inset"><Link className=' item btn-forgot' to="/forgot">Forgot password</Link></Menubar.Item>
+                                {/* <Menubar.Item className="MenubarItem inset btn-inset"><Link className=' item btn-forgot' to="/dashboard">Dashboard</Link></Menubar.Item> */}
                             </Menubar.RadioGroup>
                         </Menubar.Content>
                     </Menubar.Portal>

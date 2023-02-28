@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './App.css';
 import Menu from './Layout/Menu';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,7 +12,9 @@ import MyForgotPsw from './Layout/MyForgotPsw';
 import TabInfo from './Views/TabInfo';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Dashboard from "./Views/Dashboard";
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <BrowserRouter>
       <Menu />
@@ -25,6 +27,7 @@ function App() {
         <Route path="login" element={<MyLogin />} />
         <Route path="register" element={<MyRegister />} />
         <Route path="forgot" element={<MyForgotPsw />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </Routes>
       <ToastContainer
         position="bottom-right"

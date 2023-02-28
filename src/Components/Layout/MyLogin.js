@@ -1,109 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 import './MyLogin.css'
-import * as Tabs from '@radix-ui/react-tabs'
-import PasswordChecklist from "react-password-checklist"
+import { useNavigate } from 'react-router-dom';
+import { Menu } from '@radix-ui/react-menubar';
+import Sidebar from '../Views/Sidebar'
 
-export default function MyLogin() {
-    const [users, setUsers] = useState('')
-    const [password, setPassword] = useState("")
-    const [passwordAgain, setPasswordAgain] = useState("")
-    const handleName = (e) => {
-        const { password, value } = e.target
-        setPassword({ ...password, [password]: value })
-        console.log(value);
+const MyLogin = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const handleEmailChange = (event) => {
+        setEmail(event.target.value);
     }
-    const onSubmit = () => {
-        setPassword('cuong')
-        setPassword('')
+
+    const handlePasswordChange = (event) => {
+        setPassword(event.target.value);
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:3030/users/login', { email, password })
+            .then(response => {
+                console.log(response.data);
+                setIsLoggedIn(true);
+                navigate("/dashboard");
+            })
+            .catch(error => {
+                console.log(error);
+                setError('Invalid email or password !');
+            });
+    }
+
     return (
-        <div className='container-login'>
-            <div className='content-login'>
-                <h5 className='title-login'>Login with me !</h5>
-                <Tabs.Root className="TabsRoot" defaultValue="tab1">
-                    <Tabs.List className="TabsList" aria-label="Manage your account">
-                        <Tabs.Trigger className="TabsTrigger" value="tab1">
-                            Login
-                        </Tabs.Trigger>
-                        <Tabs.Trigger className="TabsTrigger" value="tab2">
-                            Reset password
-                        </Tabs.Trigger>
-                    </Tabs.List>
-                    <Tabs.Content className="TabsContent" value="tab1">
-                        <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="username">
-                                Username
-                            </label>
-                            <input
-                                onChange={handleName}
-                                className="Input input-valid" id="username"
-                                defaultValue="manhcuong2603" pattern="[a-z, 0-9]*"
-                            />
-                        </fieldset>
-                        <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="name">
-                                Password
-                            </label>
-                            <input
-                                onChange={handleName}
-                                className="Input input-valid" id="name"
-                                type="password" pattern="[a-z, A-Z, 0-9]*"
-                            />
-                        </fieldset>
-                        <div className='for-fun'>
-                            <div className="spinner">
-                                <div className="bubble-1"></div>
-                                <div className="bubble-2"></div>
-                            </div>
+        <>
+            <div className='container-login' >
+                <div className='content-login'>
+                    <form className="form-tab-register" onSubmit={handleSubmit}>
+                        <div className="Fieldset">
+                            <label className="Label" htmlFor="email">Email:</label>
+                            <input className="Input" type="email" name="email" id="email" value={email} onChange={handleEmailChange} required />
                         </div>
-                        <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
-                            <button onClick={() => onSubmit()} className="Button green">Login</button>
+                        <div className="Fieldset">
+                            <label className="Label" htmlFor="password">Password:</label>
+                            <input className="Input" type="password" name="password" id="password" value={password} onChange={handlePasswordChange} required />
                         </div>
-                    </Tabs.Content>
-                    <Tabs.Content className="TabsContent" value="tab2">
-                        <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="currentPassword">
-                                Current password
-                            </label>
-                            <input className="Input" id="currentPassword" type="password" />
-                        </fieldset>
-                        <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="newPassword">
-                                New password
-                            </label>
-                            <input className="Input" id="newPassword" type="password" onChange={e => setPassword(e.target.value)} />
-                        </fieldset>
-                        <fieldset className="Fieldset">
-                            <label className="Label" htmlFor="confirmPassword">
-                                Confirm password
-                            </label>
-                            <input className="Input" id="confirmPassword" type="password" onChange={e => setPasswordAgain(e.target.value)} />
-                        </fieldset>
-                        <div style={{ display: 'flex', marginTop: 20, justifyContent: 'flex-end' }}>
-                            <button className="Button green">Change password</button>
+                        {error && <p className='err-login'>{error}</p>}
+                        <button className="btn-myregister btn-btnlogin" type="submit">Log in</button>
+                        <span className="or-singin or-login">Or Sing In with ?</span>
+                        <div className="face face-login">
+                            <div className="sing-or"><i className="fa-brands fa-facebook-f"></i>FaceBook</div>
+                            <div className="sing-or"><i className="fa-brands fa-twitter"></i>Twitter</div>
                         </div>
-
-                        <PasswordChecklist
-                            rules={["minLength", "specialChar", "number", "capital", "match"]}
-                            minLength={8}
-                            value={password}
-                            valueAgain={passwordAgain}
-                            messages={{
-                                minLength: "Password length more than 8 characters",
-                                specialChar: "Password with special characters",
-                                number: "Password with number",
-                                capital: "Password has 1 capital letter",
-                                match: "No password match",
-                            }}
-                        />
-                    </Tabs.Content>
-                </Tabs.Root>
-                <span className="or-singin or-login">Or Sing In with ?</span>
-                <div className="face face-login">
-                    <div className="sing-or"><i className="fa-brands fa-facebook-f"></i>FaceBook</div>
-                    <div className="sing-or"><i className="fa-brands fa-twitter"></i>Twitter</div>
+                    </form>
                 </div>
             </div>
-        </div>
-    )
+
+        </>
+    );
 }
+
+export default MyLogin;

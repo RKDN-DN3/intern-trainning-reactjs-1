@@ -29,10 +29,14 @@ export default function MyTodo() {
         setCurrentUser({ id: user.id, name: user.name, username: user.username })
     }
     //UPDATE
-    const updateUser = (user) => {
+    const updateUser = async (user) => {
         setEditing(false)
-        axios.patch(`http://localhost:3030/users/${user.id}`, user) // ,user để lưu vào db
-        setUsers(users, user)
+        const response = await axios.patch(`http://localhost:3030/users/${user.id}`, user) // ,user để lưu vào db
+        if (response) {
+            axios.get('http://localhost:3030/users').then((response) => {
+                setUsers(response.data)
+            })
+        }
     }
 
     //Delete
