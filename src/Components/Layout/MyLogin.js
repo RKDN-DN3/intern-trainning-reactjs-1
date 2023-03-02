@@ -1,39 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './MyLogin.css'
 import { useNavigate } from 'react-router-dom';
-import { Menu } from '@radix-ui/react-menubar';
-import Sidebar from '../Views/Sidebar'
+// import { hash } from 'bcryptjs';
+// import bcrypt from 'bcryptjs';
 
-const MyLogin = () => {
+const MyLogin = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
     }
-
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        // const hashedPassword = await hash(password, 10);
         axios.post('http://localhost:3030/users/login', { email, password })
             .then(response => {
-                console.log(response.data);
-                setIsLoggedIn(true);
                 navigate("/dashboard");
+                props.onLogin(); // update parent component state
+                localStorage.setItem('foo', 'bar');
+                console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
                 setError('Invalid email or password !');
             });
     }
-
     return (
         <>
             <div className='container-login' >
@@ -41,11 +40,11 @@ const MyLogin = () => {
                     <form className="form-tab-register" onSubmit={handleSubmit}>
                         <div className="Fieldset">
                             <label className="Label" htmlFor="email">Email:</label>
-                            <input className="Input" type="email" name="email" id="email" value={email} onChange={handleEmailChange} required />
+                            <input className="Input" type="email" name="email" value={email} onChange={handleEmailChange} required />
                         </div>
                         <div className="Fieldset">
                             <label className="Label" htmlFor="password">Password:</label>
-                            <input className="Input" type="password" name="password" id="password" value={password} onChange={handlePasswordChange} required />
+                            <input className="Input" type="password" name="password" value={password} onChange={handlePasswordChange} required />
                         </div>
                         {error && <p className='err-login'>{error}</p>}
                         <button className="btn-myregister btn-btnlogin" type="submit">Log in</button>

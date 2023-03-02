@@ -28,7 +28,7 @@ const MyList = () => {
     useEffect(() => {
         axios.get('http://localhost:3030/users').then((response) => {
             setUser(response.data)
-            console.log('check list user', response.data);
+            // console.log('check list user', response.data);
         })
 
     }, [])
