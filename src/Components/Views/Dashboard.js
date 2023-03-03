@@ -1,9 +1,21 @@
 import React from 'react'
 import './Dashboard.css'
+import axios from 'axios';
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+
+    // useEffect(() => {
+    //     axios.get('http://localhost:3030/users/whoami')
+    //         .then(res => {
+
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // }, []);
     return (
         <div className='container-dashboard'>
+
             <div className="dash">
                 <div className="body">
                     <main className="main">

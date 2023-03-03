@@ -1,12 +1,10 @@
 
 import { useState, useEffect } from 'react'
 import * as React from 'react';
-import AddUserForm from '../Form/AddUserForm'
 import EditUserForm from '../Form/EditUserForm'
 import UserTable from '../Form/UserTable'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 import axios from "axios";
 import './MyTodo.css';
 
@@ -56,40 +54,29 @@ export default function MyTodo() {
 
     }
 
-
     return (
         <div className="container">
             <div className='home-add'>
                 <div className="flex-row">
-                    {editing ? (
-                        <div className='home-add-user'>
-                            <h2>Upload info</h2>
+                    {editing === true ? (
+                        <>
+                            <h2 className='title-update'>UpDate User</h2>
                             <EditUserForm
                                 setEditing={setEditing}
                                 currentUser={currentUser}
                                 updateUser={updateUser}
-                            />
-                        </div>
+                            /></>
                     ) : (
-                        <div className="flex-large1">
-                            <h2>Add user</h2>
-                            <AddUserForm
-                            // addUser={addUser}
+                        <div className="flex-large">
+                            <h2 className='title-view'>View Users</h2>
+                            <UserTable
+                                users={users}
+                                deleteUser={deleteUser}
+                                editUser={editRow}
                             />
-                        </div>
-                    )}
-
-                    <div className="flex-large">
-                        <h2>View users</h2>
-                        <UserTable
-                            users={users}
-                            deleteUser={deleteUser}
-                            editUser={editRow}
-                        />
-                    </div>
+                        </div>)}
                 </div>
             </div>
-
         </div>
     )
 }

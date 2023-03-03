@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import '../Layout/MyTodo.css'
 const EditUserForm = (props) => {
     const [user, setUser] = useState(props.currentUser)
 
@@ -6,44 +7,42 @@ const EditUserForm = (props) => {
         const { name, value } = event.target
         setUser({ ...user, [name]: value })
     }
-
     return (
-        <form
+        <form className='form-upload'
             onSubmit={(event) => {
                 event.preventDefault()
                 props.updateUser(user);
-                // console.log('check user', user); thông tin sửa
             }}
         >
-            {/* <label>Name</label> */}
-            <div className='add-name'>
-                <input
-                    type="text"
-                    name="name"
-                    value={user.name}
-                    onChange={handleInputChange}
-                />
-            </div>
-            {/* <label>Username</label> */}
-            <div className='add-username'>
-                <input
-                    type="text"
-                    name="username"
-                    value={user.username}
-                    onChange={handleInputChange}
-                />
-            </div>
-            <div className='btn'>
-                <button className='btn-update'
-                >
-                    Update user
-                </button>
-                <button
-                    onClick={() => props.setEditing(false)}
-                    className="btn-cancel"
-                >
-                    Cancel
-                </button>
+            <div className='form-input-upload'>
+                <div className='add-name'>
+                    <input className='add-name-input'
+                        type="text"
+                        name="name"
+                        value={user.name}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className='add-username'>
+                    <input className='add-name-input'
+                        type="text"
+                        name="username"
+                        value={user.username}
+                        onChange={handleInputChange}
+                    />
+                </div>
+                <div className='btn'>
+                    <button className='btn-update'
+                    >
+                        Update user
+                    </button>
+                    <button
+                        onClick={() => props.setEditing(false)}
+                        className="btn-cancel"
+                    >
+                        Cancel
+                    </button>
+                </div>
             </div>
         </form>
     )

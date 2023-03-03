@@ -11,6 +11,7 @@
     margin-top: 50px;
     justify-content: center;
     background-color: #ffffff;
+    flex-wrap: wrap;
 }
 
 /* reset */
@@ -48,6 +49,9 @@ button {
     cursor: pointer;
 }
 
+.wlc {
+    color: red;
+}
 
 
 .MenubarTrigger[data-highlighted],

@@ -40,6 +40,7 @@ const MyRegister = () => {
     return (
         <div className='container-register'>
             <div className='tab-register'>
+                <h1 className='rg'>Create your Account</h1>
                 <form className="form-tab-register" onSubmit={handleSubmit}>
                     <div className='form-input-rg'>
                         <div className="form-group">

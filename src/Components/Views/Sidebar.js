@@ -11,12 +11,12 @@ export default function Sidebar() {
                 </div>
                 <div className="sidebar_icon">
                     <NavLink className='item' to="/mytodo">
-                        <i class="fa-solid fa-table-list"></i>
+                        <i classname="fa-solid fa-table-list"></i>
                     </NavLink>
                 </div>
                 <div className="sidebar_icon">
                     <NavLink className='item' to="/profile">
-                        <i class="fa-solid fa-user"></i>
+                        <i classname="fa-solid fa-user"></i>
                     </NavLink>
                 </div>
             </div>

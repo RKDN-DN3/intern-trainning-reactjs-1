@@ -69,7 +69,6 @@ input:focus .span {
 }
 
 
-/* Edit user btn */
 .btn {
     display: flex;
 }
@@ -102,7 +101,6 @@ input:focus .span {
     background-color: #414141;
 }
 
-/* user-table */
 .user-table th {
     font-size: 17px;
     font-weight: 600;
@@ -138,8 +136,6 @@ input:focus .span {
     background-color: #d32f2f;
 }
 
-/* toaats view */
-/* reset */
 button {
     all: unset;
 }
