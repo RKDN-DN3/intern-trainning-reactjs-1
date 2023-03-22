@@ -4,19 +4,22 @@ import './index.css';
 import App from '../src/Components/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './Store';
 import { BrowserRouter } from "react-router-dom";
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './Store/index';
+
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <GoogleOAuthProvider clientId='176407481103-fcpahi0vgfn7te9612vr80jg2ihvsti1.apps.googleusercontent.com'>
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </GoogleOAuthProvider>
-    </React.StrictMode>
+      </React.StrictMode>
+    </PersistGate>
   </Provider>
 );
 

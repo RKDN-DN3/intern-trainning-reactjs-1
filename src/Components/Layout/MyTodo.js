@@ -40,27 +40,25 @@ export default function MyTodo() {
             toast.error('Update Failed !')
         }
     }
-
+    const [currentUsers, setCurrentUsers] = useState({});
+    useEffect(() => {
+        const currentUser = JSON.parse(localStorage.getItem('persist:root'));
+        setCurrentUsers(currentUser);
+    }, []);
     //Delete
     const deleteUser = async (id) => {
-        console.log('check id', id);
         try {
-            const response = await axios.delete(`http://localhost:3030/users/${id}`)
-            if (response) {
-                setUsers(users.filter(item => item.id !== id));
-                toast.success('Delete Success !');
-            } else {
-                toast.error('Delete Failed !');
-            }
+            const token = localStorage.getItem('token');
+            await axios.delete(`http://localhost:3030/users/${id}`, {
+                headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+            })
+            setUsers(users.filter(item => item.id !== id));
+            toast.success('Delete Success !');
         } catch (error) {
             console.log(error);
             toast.error('Delete Failed !');
         }
-
     }
-
-
-
     const [formData, setFormData] = useState({
         id: Math.floor(Math.random() * 999) + 1,
         email: '',

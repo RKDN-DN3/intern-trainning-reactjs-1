@@ -1,30 +1,30 @@
-import React, { useEffect } from 'react';
+
+import React from 'react';
 import * as Menubar from '@radix-ui/react-menubar';
 import './Menu.css';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { logoutUser } from '../../Store/apiRequest';
 
 const RADIO_ITEMS = ['Andy', 'Benoît', 'Luis'];
 const Menu = () => {
     const [radioSelection, setRadioSelection] = React.useState(RADIO_ITEMS[2]);
     const user = useSelector((state) => state.myListReducer.login.currentUser)
-    const handleLogout = async () => {
+    // console.log(user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const id = user?.id;
+    const handleLogout = () => {
+        logoutUser(dispatch, id, navigate)
+        toast.success('Logout Success !')
         window.location.href = '/login';
-        localStorage.removeItem('isLoggedIn')
-        localStorage.removeItem('dataLogin')
-        toast.info('LogOut Success !')
     };
-    useEffect(() => {
-        JSON.parse(window.localStorage.getItem('dataLogin'));
-    }, [])
-    const data = JSON.parse(window.localStorage.getItem('dataLogin'));
-
     return (
         <Menubar.Root className="MenubarRoot">
-            {user || data ? (
+            {user ? (
                 <>
-                    {data.roles === ("admin" || "Admin") ? (
+                    {user.roles === ("admin" || "Admin") ? (
                         <>
                             <div className="nav-menu">
                                 <Menubar.Menu>
@@ -63,7 +63,7 @@ const Menu = () => {
                             </div>
                             <div className='user-log'>
                                 <div className='hi-name'>
-                                    {user ? <p>Hi_<span><b>{user.roles}: </b>{user.name} </span></p> : <p>Hi_<span> <b>{data.roles}</b>: {data.name}</span></p>}
+                                    <p>Hi_<span><b>{user.roles}: </b>{user.name} </span></p>
                                 </div>
 
                                 <Link onClick={handleLogout} className="item logout-item">
@@ -102,7 +102,7 @@ const Menu = () => {
                             </div>
                             <div className='user-log'>
                                 <div className='hi-name'>
-                                    {user ? <p>Hi_<span><b>{user.roles}: </b>{user.name} </span></p> : <p>Hi_<span> <b>{data.roles}</b>: {data.name}</span></p>}
+                                    <p>Hi_<span><b>{user.role}: </b>{user.name} </span></p>
                                 </div>
 
                                 <Link onClick={handleLogout} className="item logout-item">

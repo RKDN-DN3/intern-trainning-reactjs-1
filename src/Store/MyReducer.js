@@ -7,11 +7,10 @@ const myListSlice = createSlice({
             isFetching: false,
             error: false
         },
-        // logout: {
-        //     currentUser: null,
-        //     isFetching: false,
-        //     error: false
-        // },
+        logout: {
+            isFetching: false,
+            error: false
+        },
         register: {
             isFetching: false,
             error: false,
@@ -64,18 +63,18 @@ const myListSlice = createSlice({
             state.login.error = true;
         },
         //=============================================//
-        // logoutStart: (state) => {
-        //     state.logout.isFetching = true;
-        // },
-        // logoutSuccess: (state, action) => {
-        //     state.logout.isFetching = false;
-        //     state.logout.currentUser = action.payload;
-        //     state.logout.error = false;
-        // },
-        // logoutFailed: (state) => {
-        //     state.logout.isFetching = false;
-        //     state.logout.error = true;
-        // },
+        logoutStart: (state) => {
+            state.login.isFetching = true;
+        },
+        logoutSuccess: (state) => {
+            state.login.isFetching = false;
+            state.login.currentUser = null;
+            state.login.error = false;
+        },
+        logoutFailed: (state) => {
+            state.login.isFetching = false;
+            state.login.error = true;
+        },
         //=============================================//
         registerStart: (state) => {
             state.register.isFetching = true;
@@ -90,19 +89,6 @@ const myListSlice = createSlice({
             state.register.error = true;
             state.register.success = false;
         },
-        //=============================================//
-        // logoutStart: (state) => {
-        //     state.logout.isFetching = true;
-        // },
-        // logoutSuccess: (state, action) => {
-        //     state.logout.isFetching = false;
-        //     state.logout.currentUser = action.payload;
-        //     state.logout.error = false;
-        // },
-        // logoutFailed: (state) => {
-        //     state.logout.isFetching = false;
-        //     state.logout.error = true;
-        // },
         //=============================================//
         createNewStart: (state) => {
             state.createNew.isFetching = true;
@@ -127,14 +113,11 @@ const myListReducer = myListSlice.reducer
 //Selector
 export const myListSelector = state => state.myListReducer.allMyList
 //export action
-export const { addList, deleteTodo, editList,
-    loginStart,
-    loginSuccess,
-    loginFailed,
-    registerStart,
-    registerSuccess,
-    registerFailed,
-    createNewStart,
-    createNewSuccess,
-    createNewFailed, } = myListSlice.actions
+export const {
+    addList, deleteTodo, editList,
+    loginStart, loginSuccess, loginFailed,
+    registerStart, registerSuccess, registerFailed,
+    createNewStart, createNewSuccess, createNewFailed,
+    logoutStart, logoutSuccess, logoutFailed
+} = myListSlice.actions
 export default myListReducer

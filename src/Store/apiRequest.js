@@ -1,29 +1,43 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { createNewFailed, createNewStart, createNewSuccess, loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess } from "./MyReducer";
+import {
+    createNewFailed, createNewStart, createNewSuccess,
+    loginFailed, loginStart, loginSuccess,
+    logoutFailed, logoutStart, logoutSuccess,
+    registerFailed, registerStart, registerSuccess
+} from "./MyReducer";
 import { getAllUserFailed, getAllUserStart, getAllUserSuccess } from "./userSlice";
 
+
+
 export const loginUser = async (user, dispatch, navigate) => {
-    const loginGoogle = localStorage.getItem('dataLogin');
+
     dispatch(loginStart());
     try {
-        const res = await axios.post('http://localhost:3030/users/login', user);
-        dispatch(loginSuccess(res.data, loginGoogle))
-        navigate('/')
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('dataLogin', JSON.stringify(res.data));
-        toast.success('Login Success !')
+        axios.post('http://localhost:3030/users/login', user).then((response) => {
+            console.log(response.data.accessToken);
+            localStorage.setItem('token', response.data.accessToken);
+            navigate('/')
+            dispatch(loginSuccess(response.data))
+            // localStorage.setItem('isLoggedIn', 'true');
+            toast.success('Login Success !')
+        })
+
     } catch (err) {
         dispatch(loginFailed())
         toast.error('Invalid Email or Password !', err)
     }
 }
-// export const logoutUser = (dispatch) => {
-//     dispatch(logout());
-//     localStorage.removeItem('loggedIn'); // Xoá trạng thái đăng nhập khỏi local storage
-//     document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'; // Xoá trạng thái đăng nhập khỏi cookie
-// localStorage.removeItem('isLoggedIn');
-//   };
+export const logoutUser = async (dispatch, navigate, id) => {
+    dispatch(logoutStart());
+    try {
+        await axios.post('http://localhost:3030/users/signout', id);
+        dispatch(logoutSuccess());
+        navigate('/login')
+    } catch (error) {
+        dispatch(logoutFailed());
+    }
+};
 export const registerUser = async (user, dispatch, navigate) => {
     dispatch(registerStart());
     try {

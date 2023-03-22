@@ -22,7 +22,7 @@ export default function MyLogin() {
             email: email,
             password: password
         }
-        loginUser(newUser, dispatch, navigate)
+        loginUser(newUser, dispatch, navigate);
     }
     return (
         <>
