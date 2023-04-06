@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import './UserTable.css'
+import { useTranslation } from 'react-i18next';
 const UserTable = (props) => {
+    const { t } = useTranslation();
     const USERS = props.users
     // the value of the search field 
     const [name, setName] = useState('');
@@ -49,11 +51,11 @@ const UserTable = (props) => {
                                         onClick={() => {
                                             props.editUser(user)
                                         }}
-                                    >Edit
+                                    > {t('Accounts.edit')}
                                     </button>
                                     <button className="btn-delete"
                                         onClick={() => props.deleteUser(user.id)}
-                                    >Delete
+                                    >{t('Accounts.delete')}
                                     </button>
                                 </div>
                             </li>

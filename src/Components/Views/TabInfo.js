@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 import './TabInfo.css'
 import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 export default function TabInfo() {
     const navigate = useNavigate();
     const { id } = useParams();
+    const { t } = useTranslation();
 
 
     //getUserById from database
@@ -20,17 +22,49 @@ export default function TabInfo() {
     }, [id]);
 
     if (!user) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <div className="boxes">
+                    <div className="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div className="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div className="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div className="box">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <p className='load'>
+                    Loading .......
+                </p>
+            </>
+        )
     }
     return (
         <div className='container-view-info'>
-            <p>View Info</p>
+            <p>{t('Accounts.viewIf')}</p>
             <div className='info-container'>
                 <div className='view-info'>
                     <div key={user.id}>
                         <img src={`https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 100) + 1}.jpg`} className='avt' alt='' />
                         <div className='info-user' >
-                            <label>Name</label>
+                            <label>{t('Accounts.Name')}</label>
                             <div className='item-info'>
                                 <span>{user.name} {user.username}</span>
                             </div>
@@ -38,7 +72,7 @@ export default function TabInfo() {
                             <div className='item-info'>
                                 <span>{user.email}</span>
                             </div>
-                            <label>Roles</label>
+                            <label>{t('Accounts.roles')}</label>
                             <div className='item-info'>
                                 <textarea disabled value={user.roles}>
                                     {user.roles}
@@ -46,10 +80,10 @@ export default function TabInfo() {
                             </div>
                         </div>
                     </div >
-                    <button onClick={() => navigate(-1)} className='btn-back'>Back<i className="fa-solid fa-angles-left"></i></button>
+                    <button onClick={() => navigate(-1)} className='btn-back'>{t('Accounts.cancel')}<i className="fa-solid fa-angles-left"></i></button>
                 </div>
                 <div className='view-contact'>
-                    <lable>Contact Us</lable>
+                    <lable>{t('Accounts.contact')}</lable>
                     <div className='info-contact'>
                         <span className='pen-contact'><i className="fas fa-map-marker-alt"></i>Address: 198 West 21th Street, Suite 721 New York NY 10016</span>
                         <span className='pen-contact'><i className="fas fa-phone"></i>Phone: + 1235 2355 98 </span>

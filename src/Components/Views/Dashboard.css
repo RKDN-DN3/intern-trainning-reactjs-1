@@ -535,6 +535,33 @@ a:focus {
     opacity: .7;
 }
 
+/* btn-translation */
+.btn-translation {
+    position: absolute;
+    background-color: #fff;
+    top: 5%;
+    left: 10%;
+    z-index: 10;
+    border-radius: 10px;
+    width: 50px;
+    font-weight: 500;
+    display: flex;
+    box-shadow: 1px 3px 2px 1px black;
+    justify-content: space-evenly;
+    padding: 2px 5px;
+}
+
+.btn-translation button:hover {
+    color: rgb(6, 114, 114);
+    cursor: pointer;
+}
+
+
+.btn-translation button:focus {
+    color: red;
+}
+
+
 @media(min-width: 1112px) and (max-width: 1335px) {
 
     .main__cards-container {

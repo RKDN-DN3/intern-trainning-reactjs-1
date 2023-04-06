@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import '../Layout/MyTodo.css'
+import { useTranslation } from 'react-i18next';
 const EditUserForm = (props) => {
+    const { t } = useTranslation();
     const [user, setUser] = useState(props.currentUser)
 
     const handleInputChange = (event) => {
@@ -36,13 +38,13 @@ const EditUserForm = (props) => {
                 <div className='btn'>
                     <button className='btn-update'
                     >
-                        Update user
+                        {t('Accounts.update')}
                     </button>
                     <button
                         onClick={() => props.setEditing(false)}
                         className="btn-cancel"
                     >
-                        Cancel
+                        {t('Accounts.cancel')}
                     </button>
                 </div>
             </div>

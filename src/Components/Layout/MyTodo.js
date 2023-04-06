@@ -9,7 +9,11 @@ import axios from "axios";
 import './MyTodo.css';
 import { useDispatch } from 'react-redux';
 import { createNewUser } from '../../Store/apiRequest';
+import { useTranslation } from 'react-i18next';
+
+
 export default function MyTodo() {
+    const { t } = useTranslation();
     //getAllUser from database
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -30,33 +34,45 @@ export default function MyTodo() {
     //UPDATE
     const updateUser = async (user) => {
         setEditing(false)
-        const response = await axios.patch(`http://localhost:3030/users/${user.id}`, user) // ,user để lưu vào db
+        const token = localStorage.getItem('token');
+        const response = await axios.patch(`http://localhost:3030/users/${user.id}`, user, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+        }).catch((error) => {
+            toast.error(error.response.data.message);
+        }) // ,user để lưu vào db
         if (response) {
             axios.get('http://localhost:3030/users').then((response) => {
                 setUsers(response.data)
             })
             toast.success('Update Success !')
-        } else {
-            toast.error('Update Failed !')
         }
     }
-    const [currentUsers, setCurrentUsers] = useState({});
-    useEffect(() => {
-        const currentUser = JSON.parse(localStorage.getItem('persist:root'));
-        setCurrentUsers(currentUser);
-    }, []);
+
+    // const [currentUsers, setCurrentUsers] = useState({});
+    // useEffect(() => {
+    //     const currentUser = JSON.parse(localStorage.getItem('persist:root'));
+    //     setCurrentUsers(currentUser);
+    // }, []);
     //Delete
     const deleteUser = async (id) => {
         try {
             const token = localStorage.getItem('token');
             await axios.delete(`http://localhost:3030/users/${id}`, {
-                headers: { Authorization: `Bearer ${token}`, Accept: 'application/json' },
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
             })
             setUsers(users.filter(item => item.id !== id));
             toast.success('Delete Success !');
         } catch (error) {
             console.log(error);
-            toast.error('Delete Failed !');
+            toast.error(error.response.data.message);
         }
     }
     const [formData, setFormData] = useState({
@@ -81,6 +97,7 @@ export default function MyTodo() {
             password: '',
             name: '',
             username: '',
+            roles: ''
         });
         setUsers([...users, formData])
 
@@ -104,7 +121,7 @@ export default function MyTodo() {
                 <div className="flex-row">
                     {editing === true ? (
                         <>
-                            <h2 className='title-update'>UpDate User</h2>
+                            <h2 className='title-update'>{t('Accounts.updateUser')}</h2>
                             <EditUserForm
                                 setEditing={setEditing}
                                 currentUser={currentUser}
@@ -113,7 +130,7 @@ export default function MyTodo() {
                         </>
                     ) : (
                         <div className="flex-large">
-                            <h2 className='title-view'>View Admin Users</h2>
+                            <h2 className='title-view'>{t('Accounts.listUser')}</h2>
                             <button onClick={handleOpen} className='btn-add'>
                                 <svg height="36px" width="36px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
                                     <rect fill="#fdd835" y="0" x="0" height="36" width="36"></rect>
@@ -127,7 +144,7 @@ export default function MyTodo() {
                                     <path d="M15.078,19.043c1.957-0.326,5.122-0.529,4.435,1.304c-0.489,1.304-7.185,2.185-7.185,0.652 C12.328,19.467,15.078,19.043,15.078,19.043z" fill="#e1f5fe"></path>
                                 </svg>
                                 <span className="now">now!</span>
-                                <span className="play">Add new</span>
+                                <span className="play">{t('Accounts.add')}</span>
                             </button>
                             <UserTable
                                 users={users}
@@ -165,8 +182,8 @@ export default function MyTodo() {
                             </select>
                         </div>
                         <div className='contai-button'>
-                            <button className='btn btn-add'>Add</button>
-                            <button onClick={closeOpen} className='btn btn-cancell'>Cancel</button>
+                            <button className='btn btn-add'>{t('Accounts.add')}</button>
+                            <button onClick={closeOpen} className='btn btn-cancell'>{t('Accounts.cancel')}</button>
                         </div>
                     </div>
                 </form>
